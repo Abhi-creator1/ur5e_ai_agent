@@ -1,0 +1,51 @@
+add cartesian controller plugin in ur_robot_driver/ur_controller.yaml
+
+    cartesian_motion_controller:
+     type: cartesian_motion_controller/CartesianMotionController
+
+
+cartesian_motion_controller:
+  ros__parameters:
+    # See the cartesian_compliance_controller
+    end_effector_link: "$(var tf_prefix)tool0"
+    robot_base_link: "$(var tf_prefix)base_link"
+    joints:
+      - $(var tf_prefix)shoulder_pan_joint
+      - $(var tf_prefix)shoulder_lift_joint
+      - $(var tf_prefix)elbow_joint
+      - $(var tf_prefix)wrist_1_joint
+      - $(var tf_prefix)wrist_2_joint
+      - $(var tf_prefix)wrist_3_joint
+
+    # See the cartesian_compliance_controller
+    command_interfaces:
+      - position
+        #- velocity
+
+    solver:
+      error_scale: 1.0
+      iterations: 10
+      publish_state_feedback: True
+
+    pd_gains:
+      trans_x: { p: 1.0 }
+      trans_y: { p: 1.0 }
+      trans_z: { p: 1.0 }
+      rot_x: { p: 0.5 }
+      rot_y: { p: 0.5 }
+      rot_z: { p: 0.5 }
+
+
+update moveit launch file to find this plugin ur_moveit_config/launch/ur_moveit.launch.py
+
+
+    cartesian_motion_controller_spawner = Node(
+     package="controller_manager",
+     executable="spawner",
+     name="cartesian_motion_controller_spawner",
+     output="screen",
+ +    arguments=["cartesian_motion_controller"],
+    )
+
+
+ +   nodes_to_start = [move_group_node, rviz_node, servo_node, cartesian_motion_controller_spawner]
