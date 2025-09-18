@@ -32,7 +32,7 @@ class CartesianMotionServer(Node):
         
         # Robot state variables
         self.current_pose = None
-        self.position_tolerance = 0.01  # 1cm
+        self.position_tolerance = 0.05  # 1cm
         self.orientation_tolerance = 0.01
         self.timeout = 15.0  # seconds
         

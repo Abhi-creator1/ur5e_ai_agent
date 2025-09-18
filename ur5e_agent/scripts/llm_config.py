@@ -20,7 +20,7 @@ def get_ollama_llm(model_name: str = "qwen2.5:14b", streaming: bool = True):
         model=model_name,
         streaming=streaming,
         temperature=0.1,
-        openai_api_base="http://192.168.1.102:11434/v1",
+        openai_api_base="http://192.168.1.101:11434/v1", #192.168.1.101 10.107.113.252
         openai_api_key="OLLAMA"
     )
     print(f"🧠 Configured ChatOpenAI (Ollama network) LLM: {model_name}")
@@ -30,7 +30,7 @@ def check_ollama_connection():
     """Check if the Ollama server on the network host is running."""
     try:
         import requests
-        response = requests.get("http://192.168.1.102:11434/api/version", timeout=5)
+        response = requests.get("http://192.168.1.101:11434/api/version", timeout=5)
         if response.status_code == 200:
             print("✅ Ollama network server is running")
             return True

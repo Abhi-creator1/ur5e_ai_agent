@@ -242,6 +242,36 @@ def get_current_pose() -> str:
         return f"❌ Could not fetch pose via TF: {e}"
 
 @tool
+def rotate_joint_relative(joint_index: int, delta_deg: float, duration: float = 4.0) -> str:
+    """
+    Rotate a single joint relative to its current angle.
+    
+    Args:
+        joint_index: The zero-based index of the joint (0-5).
+        delta_deg: Rotation amount in degrees (positive or negative).
+        duration: Duration of the movement in seconds.
+    
+    Returns:
+        Success or failure message as a string.
+    """
+    initialize_node()
+    try:
+        _wait_for_data(_joint_states, data_name="joint states")
+        current_angles_deg = [np.rad2deg(a) for a in _joint_states.position]
+        if not (0 <= joint_index < 6):
+            return "❌ Invalid joint index. Must be 0-5."
+        new_angles = current_angles_deg.copy()
+        new_angles[joint_index] += delta_deg
+        
+        return _move_joint_angles_internal(new_angles, duration)
+    except TimeoutError:
+        return "❌ Failed to get current joint states"
+    except Exception as e:
+        return f"❌ Error rotating joint: {str(e)}"
+
+
+
+@tool
 def move_to_home_position() -> str:
     """Move UR5e to home joint configuration [0, -90, 90, -90, -90, 0]."""
     try:
