@@ -13,6 +13,7 @@ from llm_config import get_ollama_llm, check_ollama_connection
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
+from rich import box
 import pyinputplus as pyip
 
 # Import tools module as a package (like the reference project)
@@ -73,8 +74,8 @@ class UR5eROSAAgent(ROSA):
     @property
     def greeting(self):
         """Welcome message for users"""
-        greeting = Text("\n🤖 UR5e AI Agent Ready!\n", style="bold blue")
-        greeting.append("I can control your UR5e robot using natural language commands.\n", style="white")
+        greeting = Text("\n🤖 UR5e AI Agent Ready!\n", style="bright_yellow")
+        greeting.append("I can control your UR5e robot using natural language commands.\n", style="bright_yellow")
         greeting.append("Try asking me to move the robot, check positions, or switch controllers.\n", style="italic")
         greeting.append(f"\nCommands: 'examples', 'help', 'clear', 'exit'\n", style="dim")
         return greeting
@@ -124,7 +125,8 @@ class UR5eROSAAgent(ROSA):
         console = Console()
         
         # Welcome message - show only once at startup
-        console.print(Panel(self.greeting, title="UR5e AI Agent", border_style="blue"))
+        #console.print(Panel(self.greeting, title="UR5e AI Agent", border_style="blue"))
+        console.print(Panel(self.greeting, title="UR5e AI Agent", border_style="bright_green", box=box.DOUBLE))
         
         while True:
             try:
