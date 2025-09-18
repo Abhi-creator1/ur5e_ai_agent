@@ -1,4 +1,4 @@
-# UR5e ROSA AI Agent
+# UR5e AI Agent
 
 ## Overview
 
@@ -95,4 +95,4 @@ Interested in advancing AI-driven industrial robotics? Contributions are welcome
 
 ## License
 
-This project is licensed under the MIT License.Ur5e_llm
+This project is licensed under the MIT License.
