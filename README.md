@@ -80,8 +80,7 @@ Open multiple terminals:
 - Rotate joint 1 by 10 degrees
 
 ## Architecture
-
-*To be added.*
+6a615cd2.png
 
 ## Known Limitations and Safety
 
