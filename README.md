@@ -80,7 +80,7 @@ Open multiple terminals:
 - Rotate joint 1 by 10 degrees
 
 ## Architecture
-![Architecture](6a615cd2.png)
+![Architecture](SystemArch.png)
 
 ## Known Limitations and Safety
 
