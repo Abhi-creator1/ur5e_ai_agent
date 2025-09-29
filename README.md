@@ -79,7 +79,7 @@ Open multiple terminals:
 - What are the current joint angles?
 - Rotate joint 1 by 10 degrees
 ### Demo
-[![AI_agent_demo]](https://youtu.be/b1hVl7t81uQ)
+[![AI_agent_demo]](https://youtu.be/fxNzeWI6D94)
 ## Architecture
 ![Architecture](SystemArch.png)
 
