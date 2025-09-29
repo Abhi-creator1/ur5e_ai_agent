@@ -78,7 +78,8 @@ Open multiple terminals:
 - Move TCP right by 5 cm
 - What are the current joint angles?
 - Rotate joint 1 by 10 degrees
-
+### Demo
+[![AI_agent_demo]](https://youtu.be/b1hVl7t81uQ)
 ## Architecture
 ![Architecture](SystemArch.png)
 
